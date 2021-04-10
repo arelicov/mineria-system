@@ -120,6 +120,24 @@
                 <!-- /.invoice -->
             </div><!-- /.col -->
         </div><!-- /.row -->
+
+        <% if (compra.facturas) { %>
+            <div class="row">
+                <div class="col-12">
+                    <a href="/factura/<%= compra.facturas[0].id %>" type="button" class="btn btn-primary btn-lg">
+                        Ver Factura
+                    </a>
+                </div>
+            </div>
+        <% } else { %>
+            <div class="row">
+                <div class="col-12">
+                    <a href="/factura/create/<%= compra.idCompra %>" type="button" class="btn btn-primary btn-lg">
+                        Facturar
+                    </a>
+                </div>
+            </div>
+        <% } %>
     </div><!-- /.container-fluid -->
 </section>
 

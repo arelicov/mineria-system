@@ -2,7 +2,6 @@ import {
   Controller,
   Get,
   Param,
-  Delete,
   Render,
   All,
   Body,
@@ -45,7 +44,6 @@ export class CompraController {
   ) {
     if (req.method === 'POST') {
       const savedCompra = await this.compraService.create(createCompraDto);
-      console.log(savedCompra);
       return res.redirect(`/compra/${savedCompra.idCompra}`);
     }
 
@@ -63,7 +61,6 @@ export class CompraController {
   @Render('compra/detail')
   async findOne(@Param('id') id: string) {
     const compra = await this.compraService.findOne(+id);
-    console.log(compra);
     return { compra };
   }
 

@@ -36,5 +36,6 @@ import { ClienteService } from '../cliente/cliente.service';
     OcasionVentaService,
     MetodoEntregaService,
   ],
+  exports: [TypeOrmModule],
 })
 export class CompraModule {}

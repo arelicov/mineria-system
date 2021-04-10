@@ -4,6 +4,7 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Cliente } from '../../cliente/entities/cliente.entity';
@@ -12,6 +13,7 @@ import { MetodoPago } from '../../metodo-pago/entities/metodo-pago.entity';
 import { OcasionVenta } from '../../ocasion-venta/entities/ocasion-venta.entity';
 import { Productos } from '../../productos/entities/productos.entity';
 import { Trabajadores } from '../../trabajadores/entities/trabajadores.entity';
+import { Factura } from '../../factura/entities/factura.entity';
 
 @Index('Id_MetodoPago', ['idMetodoPago'], {})
 @Index('Id_Ocasion_Venta', ['idOcasionCompra'], {})
@@ -111,4 +113,8 @@ export class Compra {
   })
   @JoinColumn([{ name: 'Id_Trabajador', referencedColumnName: 'idTrabajador' }])
   idTrabajador2: Trabajadores;
+
+  @OneToOne(() => Factura)
+  @JoinColumn()
+  factura: Factura;
 }

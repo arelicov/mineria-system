@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCompraDto } from './dto/create-compra.dto';
-import { UpdateCompraDto } from './dto/update-compra.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Compra } from './entities/compra.entity';
@@ -56,6 +55,7 @@ export class CompraService {
         'idOcasionCompra2',
         'idMetodoEntrega2',
         'idMetodoPago2',
+        'factura',
       ],
     });
   }

@@ -15,6 +15,7 @@ import { MetodoEntregaModule } from './metodo-entrega/metodo-entrega.module';
 import { MetodoPagoModule } from './metodo-pago/metodo-pago.module';
 import { OcasionVentaModule } from './ocasion-venta/ocasion-venta.module';
 import { ConfigModule } from '@nestjs/config';
+import { FacturaModule } from './factura/factura.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { ConfigModule } from '@nestjs/config';
     MetodoEntregaModule,
     MetodoPagoModule,
     OcasionVentaModule,
+    FacturaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
