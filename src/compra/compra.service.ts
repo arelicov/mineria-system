@@ -13,22 +13,55 @@ export class CompraService {
   ) {}
 
   create(createCompraDto: CreateCompraDto) {
-    return 'This action adds a new compra';
+    const compra = new Compra();
+    compra.idTrabajador = +createCompraDto.idTrabajador;
+    compra.idArticulo = +createCompraDto.idArticulo;
+    compra.idMetodoPago = +createCompraDto.idMetodopago;
+    compra.idOcasionCompra = +createCompraDto.idOCasionCompra;
+    compra.idMetodoEntrega = +createCompraDto.idMetodoEntrega;
+    compra.idCliente = +createCompraDto.idCliente;
+    compra.unidades = +createCompraDto.unidades;
+    compra.comision = +createCompraDto.comision;
+    compra.fecha = createCompraDto.fecha;
+    compra.entregaCalleNum = createCompraDto.entregaCalleNum;
+    compra.entregaCol = createCompraDto.entregaCol;
+    compra.entregaMun = createCompraDto.entregaMun;
+    compra.entregaEdo = createCompraDto.entregaEdo;
+    compra.entregaCp = createCompraDto.entregaCp;
+
+    return this.compraRepository.save(compra);
   }
 
   findAll() {
-    return `This action returns all compra`;
+    return this.compraRepository.find({
+      relations: [
+        'idCliente2',
+        'idTrabajador2',
+        'idArticulo2',
+        'idArticulo2.idFormato2',
+        'idMetodoPago2',
+        'idOcasionCompra2',
+        'idMetodoEntrega2',
+      ],
+    });
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} compra`;
+    return this.compraRepository.findOne(+id, {
+      relations: [
+        'idTrabajador2',
+        'idCliente2',
+        'idArticulo2',
+        'idArticulo2.idFormato2',
+        'idOcasionCompra2',
+        'idMetodoEntrega2',
+        'idMetodoPago2',
+      ],
+    });
   }
 
-  update(id: number, updateCompraDto: UpdateCompraDto) {
-    return `This action updates a #${id} compra`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} compra`;
+  async remove(id: number) {
+    const compra = await this.compraRepository.findOne(id);
+    return this.compraRepository.remove(compra);
   }
 }

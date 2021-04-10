@@ -1,0 +1,128 @@
+<%- include('../template/header') %>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- Main content -->
+                <div class="invoice p-3 mb-3">
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>
+                                <i class="fas fa-globe"></i> Master Music S.A. de C.V.
+                                <small class="float-right">Fecha: 2/10/2014</small>
+                            </h4>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row invoice-info">
+                        <div class="col-sm-4 invoice-col">
+                            Vendedor:
+                            <address>
+                                <strong><%= compra.idTrabajador2.trabajadorNombre %> <%= compra.idTrabajador2.trabajadorApellido %></strong><br>
+                                <%= compra.idTrabajador2.trabajadorCalleNum %><br>
+                                <%= compra.idTrabajador2.trabajadorMun %>
+                                , <%= compra.idTrabajador2.trabajadorEstado %> <%= compra.idTrabajador2.trabajadorCp %>
+                                <br>
+                                Tel: <%= compra.idTrabajador2.trabajadorTelefono %><br>
+                            </address>
+                        </div>
+
+                        <div class="col-sm-4 invoice-col">
+                            Envio:
+                            <address>
+                                <strong><%= compra.idCliente2.nombre %> <%= compra.idCliente2.apellidos %></strong><br>
+                                <%= compra.idCliente2.colonia %>, <%= compra.idCliente2.calleNum %><br>
+                                <%= compra.idCliente2.municipio %> <%= compra.idCliente2.cp %><br>
+                                Tel: <%= compra.idCliente2.numTelefono %><br>
+                                Email: <%= compra.idCliente2.correoElectronico %>
+                            </address>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 invoice-col">
+                            <b>Venta #<%= compra.idCompra.toString().padStart(6, 0) %></b><br>
+                            <br>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Table row -->
+                    <div class="row">
+                        <div class="col-12 table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Cantidad</th>
+                                    <th>Producto</th>
+                                    <th>SKU</th>
+                                    <th>Descripcion</th>
+                                    <th>Precio</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><%= compra.unidades %></td>
+                                    <td>
+                                        <%= compra.idArticulo2.idFormato2.formato.toUpperCase() %>
+                                    </td>
+                                    <td><%= compra.idArticulo2.sku %></td>
+                                    <td>
+                                        Artista: <%= compra.idArticulo2.artista %>
+                                        <br>
+                                        Titulo: <%= compra.idArticulo2.titulo %></td>
+                                    <td>$<%= (compra.idArticulo2.precio / 10) - ((compra.idArticulo2.precio / 10) * .16) %></td>
+                                    <td>$<%= ((compra.unidades * (compra.idArticulo2.precio / 10) - (compra.unidades * (compra.idArticulo2.precio / 10) * .16))).toFixed(2) %></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <div class="row">
+                        <!-- accepted payments column -->
+                        <div class="col-6">
+                            <p class="lead">Metodo de pago: <strong><%= compra.idMetodoPago2.metodoPago %></strong></p>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-6">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th style="width:50%">Comision:</th>
+                                        <td align="right">$<%= (compra.comision / 10).toFixed(2) %></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Subtotal:</th>
+                                        <td align="right">$<%= ((compra.unidades * (compra.idArticulo2.precio / 10) - (compra.unidades * (compra.idArticulo2.precio / 10) * .16))).toFixed(2) %></td>
+                                    </tr>
+                                    <tr>
+                                        <th>IVA (16%)</th>
+                                        <td align="right">$<%= ((compra.unidades * (compra.idArticulo2.precio / 10) * .16)).toFixed(2) %></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total:</th>
+                                        <td align="right">$<%= ((compra.unidades * (compra.idArticulo2.precio / 10)) + (compra.comision / 10) ).toFixed(2) %></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.invoice -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+
+<%- include('../template/footer') %>
+
+

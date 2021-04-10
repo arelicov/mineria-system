@@ -1,0 +1,170 @@
+<%- include('../template/header') %>
+
+<div class="container">
+    <form method="post">
+        <div class="row">
+            <input type="hidden" name="fecha" id="fecha" value="<%= new Date().toISOString().substr(0, 10) %>"
+                   readonly>
+            <div class="col-md-5 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Carrito</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div class="form-group">
+                            <label for="idArticulo">Articulo</label>
+                            <select class="form-control" id="idArticulo" name="idArticulo">
+                                <% productos.forEach(function (producto) { %>
+                                    <option value="<%= producto.idArticulo %>"
+                                            data-money="<%= producto.precio / 10 %>"><%= producto.titulo %> <%= producto.artista %> ($<%= (producto.precio / 10).toFixed(2) %>)</option>
+                                <% }) %>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="unidades">Unidades</label>
+                            <select class="form-control" name="unidades" id="unidades">
+                                <% for(let i = 1; i <= 10; i++) { %>
+                                    <option value="<%= i %>"><%= i %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="form-group w-100">
+                            <label for="idOCasionCompra">Ocasion de compra</label>
+                            <select class="form-control" id="idOCasionCompra" name="idOCasionCompra">
+                                <% ocasiones.forEach(function (ocasion) { %>
+                                    <option value="<%= ocasion.idOcasionVenta %>"><%= ocasion.ocasionVenta %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                        <div class="form-group w-100">
+                            <label for="idMetodoEntrega">Metodo de entrega</label>
+                            <select class="form-control" id="idMetodoEntrega" name="idMetodoEntrega">
+                                <% metodoEntregas.forEach(function (metodo) { %>
+                                    <option value="<%= metodo.idMetodoEntrega %>"><%= metodo.metodoDeEntrega %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                        <div class="form-group w-100">
+                            <label for="comision">Comision</label>
+                            <input type="number" min="0" value="0" class="form-control" name="comision" id="comision">
+                            <small class="form-text text-muted">La comision se cobra en centavos</small>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total</span>
+                        <strong>$ <span id="total">0.00</span></strong>
+                    </li>
+                </ul>
+
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Confirmar compra</button>
+
+            </div>
+            <div class="col-md-7 order-md-1">
+                <h4 class="mb-3">Datos de compra</h4>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="idTrabajador">Vendedor</label>
+                            <select class="form-control" id="idTrabajador" name="idTrabajador">
+                                <% trabajadores.forEach(function (trabajador) { %>
+                                    <option value="<%= trabajador.idTrabajador %>"><%= trabajador.trabajadorNombre %> <%= trabajador.trabajadorApellido %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="idCliente">Cliente</label>
+                            <select class="form-control" id="idCliente" name="idCliente">
+                                <% clientes.forEach(function (cliente) { %>
+                                    <option value="<%= cliente.idCliente %>"><%= cliente.nombre %> <%= cliente.apellidos %>
+                                        (<%= cliente.usuario %>)
+                                    </option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-group">
+                        <label for="address">Calle y numero</label>
+                        <input type="text" class="form-control" name="entregaCalleNum" id="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="entregaCol">Colonia</label>
+                        <input type="text" class="form-control" name="entregaCol" id="entregaCol">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <div class="form-group">
+                            <label for="entregaEdo">Estado</label>
+                            <select class="custom-select d-block w-100" name="entregaEdo" id="entregaEdo">
+                                <option>Nuevo Leon</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                            <label for="entregaMun">Municipio</label>
+                            <select class="custom-select d-block w-100" name="entregaMun" id="entregaMun">
+                                <option>San Pedro</option>
+                                <option>Monterrey</option>
+                                <option>Santa Catarina</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="form-group">
+                            <label for="zip">Codigo Postal</label>
+                            <input type="text" class="form-control" name="entregaCp" id="zip">
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+
+                <h5 class="mb-3">Metodo de pago</h5>
+
+                <div class="d-block my-3">
+                    <div class="form-group">
+                        <% metodoPagos.forEach(function (metodoPago) { %>
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio"
+                                       id="idMetodopago-<%= metodoPago.idMetodopago %>"
+                                       value="<%= metodoPago.idMetodopago %>" name="idMetodopago">
+                                <label class="custom-control-label"
+                                       for="idMetodopago-<%= metodoPago.idMetodopago %>"><%= metodoPago.metodoPago %></label>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<%- include('../template/footer') %>
+<script>
+    (() => {
+        const articulo = document.querySelector('#idArticulo');
+        const unidades = document.querySelector('#unidades');
+        const comision = document.querySelector('#comision');
+        const total = document.querySelector('#total');
+
+        const calculateTotal = () => {
+            const valor = +articulo.options[articulo.selectedIndex].dataset.money;
+            const qty = +unidades.value;
+
+            total.innerHTML = `${((valor * qty) + +(comision.value / 10)).toFixed(2)}`;
+        }
+
+        articulo.addEventListener('change', calculateTotal);
+        unidades.addEventListener('change', calculateTotal);
+        comision.addEventListener('input', calculateTotal);
+    })()
+</script>

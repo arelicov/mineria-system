@@ -17,7 +17,7 @@ export class TrabajadoresService {
   }
 
   findAll() {
-    return `This action returns all trabajadores`;
+    return this.trabajadoresRepository.find();
   }
 
   findOne(id: number) {

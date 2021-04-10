@@ -17,7 +17,7 @@ export class MetodoEntregaService {
   }
 
   findAll() {
-    return `This action returns all metodoEntrega`;
+    return this.metodoEntregaRepository.find();
   }
 
   findOne(id: number) {

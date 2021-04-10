@@ -8,5 +8,6 @@ import { MetodoEntrega } from './entities/metodo-entrega.entity';
   imports: [TypeOrmModule.forFeature([MetodoEntrega])],
   controllers: [MetodoEntregaController],
   providers: [MetodoEntregaService],
+  exports: [TypeOrmModule],
 })
 export class MetodoEntregaModule {}

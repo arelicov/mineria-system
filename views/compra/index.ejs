@@ -1,0 +1,53 @@
+<%- include('../template/header') %>
+
+<h1>Productos</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Venta</th>
+                    <th>Cliente</th>
+                    <th>Trabajador</th>
+                    <th>Articulo</th>
+                    <th>Metodo Pago</th>
+                    <th>Ocasion de compra</th>
+                    <th>Metodo de entrega</th>
+                    <th>Unidades</th>
+                    <th>Fecha</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <% compras.forEach(function (compra) { %>
+                    <tr>
+                        <td align="middle">
+                            <a href="/compra/<%= compra.idCompra %>">
+                                <span class="badge badge-primary">
+                              <%= compra.idCompra %>
+                          </span>
+                            </a>
+                        </td>
+                        <td><%= compra.idCliente2.nombre %> <%= compra.idCliente2.apellidos %></td>
+                        <td><%= compra.idTrabajador2.trabajadorNombre %> <%= compra.idTrabajador2.trabajadorApellido %></td>
+                        <td><%= compra.idArticulo2.idFormato2.formato %></td>
+                        <td><%= compra.idMetodoPago2.metodoPago %></td>
+                        <td><%= compra.idOcasionCompra2.ocasionVenta %></td>
+                        <td><%= compra.idMetodoEntrega2.metodoDeEntrega %></td>
+                        <td><%= compra.unidades %></td>
+                        <td><%= compra.fecha %></td>
+                        <td>
+                            <a href="/compra/delete/<%= compra.idCompra%>">Eliminar</a>
+                        </td>
+                    </tr>
+                <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('../template/footer') %>
+
+

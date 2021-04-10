@@ -10,5 +10,6 @@ import { MetodoPagoService } from '../metodo-pago/metodo-pago.service';
   imports: [TypeOrmModule.forFeature([Cliente]), MetodoPagoModule],
   controllers: [ClienteController],
   providers: [ClienteService, MetodoPagoService],
+  exports: [TypeOrmModule],
 })
 export class ClienteModule {}

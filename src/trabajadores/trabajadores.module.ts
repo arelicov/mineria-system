@@ -8,5 +8,6 @@ import { Trabajadores } from './entities/trabajadores.entity';
   imports: [TypeOrmModule.forFeature([Trabajadores])],
   controllers: [TrabajadoresController],
   providers: [TrabajadoresService],
+  exports: [TypeOrmModule],
 })
 export class TrabajadoresModule {}

@@ -17,7 +17,7 @@ export class OcasionVentaService {
   }
 
   findAll() {
-    return `This action returns all ocasionVenta`;
+    return this.ocasionVentaRepository.find();
   }
 
   findOne(id: number) {

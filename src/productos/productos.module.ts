@@ -12,5 +12,6 @@ import { GeneroModule } from '../genero/genero.module';
   imports: [TypeOrmModule.forFeature([Productos]), FormatoModule, GeneroModule],
   controllers: [ProductosController],
   providers: [ProductosService, FormatoService, GeneroService],
+  exports: [TypeOrmModule],
 })
 export class ProductosModule {}
