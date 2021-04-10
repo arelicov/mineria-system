@@ -1,0 +1,41 @@
+<%- include('../template/header') %>
+
+<h1>Productos</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Artista</th>
+                    <th>SKU</th>
+                    <th>Año</th>
+                    <th>Pais</th>
+                    <th>Idioma</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <% productos.forEach(function (producto) { %>
+                    <tr>
+                        <th>
+                            <a href="/productos/<%= producto.idArticulo %>"><%= producto.titulo %></a>
+                        </th>
+                        <th><%= producto.artista %></th>
+                        <th><%= producto.sku %></th>
+                        <th><%= producto.aO %></th>
+                        <th><%= producto.pais %></th>
+                        <th><%= producto.idioma %></th>
+                        <th><a href="/productos/delete/<%= producto.idArticulo %>">Eliminar</a></th>
+                    </tr>
+                <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('../template/footer') %>
+
+

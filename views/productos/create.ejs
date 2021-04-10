@@ -1,0 +1,66 @@
+<%- include('../template/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Crear producto</h1>
+            <form method="post">
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="titulo">Titulo</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo">
+                        </div>
+                        <div class="form-group">
+                            <label for="artista">Artista</label>
+                            <input type="text" class="form-control" id="artista" name="artista">
+                        </div>
+                        <div class="form-group">
+                            <label for="sku">SKU</label>
+                            <input type="text" class="form-control" id="sku" name="sku">
+                        </div>
+                        <div class="form-group">
+                            <label for="aO">Año</label>
+                            <input type="text" class="form-control" id="aO" name="aO">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="pais">Pais</label>
+                            <input type="text" class="form-control" id="pais" name="pais">
+                        </div>
+                        <div class="form-group">
+                            <label for="idioma">Idioma</label>
+                            <input type="text" class="form-control" id="idioma" name="idioma">
+                        </div>
+                        <div class="form-group">
+                            <label for="formato">Formato</label>
+                            <select class="form-control" id="formato" name="formato">
+                                <% formatos.forEach(function (formato) {%>
+                                    <option value="<%= formato.idFormato %>"><%= formato.formato %></option>
+                                <% })%>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="genero">Genero</label>
+                            <select class="form-control" id="genero" name="genero">
+                                <% generos.forEach(function (genero) {%>
+                                    <option value="<%= genero.idGenero %>"><%= genero.genero %></option>
+                                <% })%>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<%- include('../template/footer') %>
+
+

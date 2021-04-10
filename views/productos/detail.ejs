@@ -1,0 +1,62 @@
+<%- include('../template/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Crear producto</h1>
+            <form method="post">
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="titulo">Titulo</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo" disabled value="<%= producto.titulo %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="artista">Artista</label>
+                            <input type="text" class="form-control" id="artista" name="artista" disabled value="<%= producto.artista %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="sku">SKU</label>
+                            <input type="text" class="form-control" id="sku" name="sku" disabled value="<%= producto.sku %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="aO">Año</label>
+                            <input type="text" class="form-control" id="aO" name="aO" disabled value="<%= producto.aO %>">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="pais">Pais</label>
+                            <input type="text" class="form-control" id="pais" name="pais" disabled value="<%= producto.pais %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="idioma">Idioma</label>
+                            <input type="text" class="form-control" id="idioma" name="idioma" disabled value="<%= producto.idioma %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="formato">Formato</label>
+                            <select class="form-control" id="formato" name="formato" disabled>
+                                <option value="<%= producto.idFormato %>"><%= producto.idFormato2.formato %></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="genero">Genero</label>
+                            <select class="form-control" id="genero" name="genero" disabled>
+                                    <option value="<%= producto.idGenero %>"><%= producto.idGenero2.genero %></option>
+                            </select>
+                        </div>
+                    </div>
+<!--                    <div class="col-12">-->
+<!--                        <button type="submit" class="btn btn-primary">Guardar</button>-->
+<!--                    </div>-->
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<%- include('../template/footer') %>
+
+

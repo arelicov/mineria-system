@@ -1,0 +1,93 @@
+<%- include('../template/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Crear cliente</h1>
+            <form method="post">
+
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="username">Usuario</label>
+                            <input type="text" class="form-control" id="username" name="usuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input type="email" class="form-control" id="correo" name="correoElectronico">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" id="name" name="nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Apellidos</label>
+                            <input type="text" class="form-control" id="lastname" name="apellidos">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Edad</label>
+                            <input type="number" minlength="2" class="form-control" id="age" name="edad">
+                        </div>
+                        <div class="form-group">
+                            <label for="genero">Sexo</label>
+                            <select class="form-control" id="genero" name="genero">
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Telefono</label>
+                            <input type="tel" class="form-control" id="telefono" name="numTelefono">
+                        </div>
+                    </div>
+                    <div class="col-6">
+
+                        <div class="form-group">
+                            <label for="rfc">RFC</label>
+                            <input type="text" class="form-control" id="rfc" name="rfc">
+                        </div>
+                        <div class="form-group">
+                            <label for="birthdate">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" id="birthdate" name="fechaNacimiento">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Calle y Numero</label>
+                            <input type="text" class="form-control" id="address" name="calleNum">
+                        </div>
+                        <div class="form-group">
+                            <label for="colonia">Colonia</label>
+                            <input type="text" class="form-control" id="colonia" name="colonia">
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">Codigo Postal</label>
+                            <input type="text" pattern="\d*" minlength="5" maxlength="5" class="form-control" id="zip" name="cp">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">Municipio</label>
+                            <input type="text" class="form-control" id="state" name="municipio">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="metodoPago">Metodo de pago</label>
+                            <select class="form-control" id="metodoPago" name="metodoPago">
+                                <% metodoPagos.forEach(function (metodoPago) {%>
+                                    <option value="<%= metodoPago.idMetodopago %>"><%= metodoPago.metodoPago %></option>
+                                <% })%>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<%- include('../template/footer') %>
+
+

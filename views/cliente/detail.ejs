@@ -1,0 +1,101 @@
+<%- include('../template/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Cliente <%= cliente.nombre %></h1>
+            <form method="post">
+
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="usuario">Usuario</label>
+                            <input type="text" class="form-control" id="usuario" name="usuario" disabled
+                                   value="<%= cliente.usuario %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input type="text" class="form-control" id="correo" name="correoElectronico" disabled
+                                   value="<%= cliente.correoElectronico %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" disabled
+                                   value="<%= cliente.nombre %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidos" name="apellidos" disabled
+                                   value="<%= cliente.apellidos %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="edad">Edad</label>
+                            <input type="text" class="form-control" id="edad" name="edad" disabled
+                                   value="<%= cliente.edad %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="metodoPago">Genero</label>
+                            <input type="text" class="form-control" id="metodoPago" name="metodoPago" disabled
+                                   value="<%= cliente.genero %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Telefono</label>
+                            <input type="text" class="form-control" id="telefono" name="numTelefono" disabled
+                                   value="<%= cliente.numTelefono %>">
+                        </div>
+                    </div>
+                    <div class="col-6">
+
+                        <div class="form-group">
+                            <label for="rfc">RFC</label>
+                            <input type="text" class="form-control" id="rfc" name="rfc" disabled
+                                   value="<%= cliente.rfc %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha">Fecha de nacimiento</label>
+                            <input type="text" class="form-control" id="fecha" name="fechaNacimiento" disabled
+                                   value="<%= cliente.fechaNacimiento %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="calle">Calle</label>
+                            <input type="text" class="form-control" id="calle" name="calleNum" disabled
+                                   value="<%= cliente.calleNum %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="colonia">Colonia</label>
+                            <input type="text" class="form-control" id="colonia" name="colonia" disabled
+                                   value="<%= cliente.colonia %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="cp">Codigo Postal</label>
+                            <input type="number" minlength="5" maxlength="5" class="form-control" id="cp" name="cp" disabled
+                                   value="<%= cliente.cp %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="municipio">Municipio</label>
+                            <input type="text" class="form-control" id="municipio" name="municipio" disabled
+                                   value="<%= cliente.municipio %>">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="metodoPago">Metodo de pago</label>
+                            <select class="form-control" id="metodoPago" name="metodoPago" disabled>
+                                <option><%= cliente.idMetodopago2.metodoPago %></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<%- include('../template/footer') %>
+
+

@@ -1,0 +1,43 @@
+<%- include('../template/header') %>
+
+<h1>Clientes</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Edad</th>
+                    <th>Genero</th>
+                    <th>Telefono</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <% clientes.forEach(function (cliente) { %>
+                    <tr>
+                        <th>
+                            <a href="/cliente/<%= cliente.idCliente %>"><%= cliente.usuario %></a>
+                        </th>
+                        <td><%= cliente.correoElectronico %></td>
+                        <td><%= cliente.nombre %></td>
+                        <td><%= cliente.apellidos %></td>
+                        <td><%= cliente.edad %></td>
+                        <td><%= cliente.genero %></td>
+                        <td><%= cliente.numTelefono %></td>
+                        <th><a href="/cliente/delete/<%= cliente.idCliente %>">Eliminar</a></th>
+                    </tr>
+                <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('../template/footer') %>
+
+
