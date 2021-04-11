@@ -1,4 +1,4 @@
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UpdateFacturaDto } from './dto/update-factura.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -11,20 +11,25 @@ export class FacturaService {
   constructor(
     @InjectRepository(Factura)
     private facturaRepository: Repository<Factura>,
-    @Inject(forwardRef(() => CompraService))
+    @InjectRepository(Compra)
     private compraRepository: Repository<Compra>,
   ) {}
 
-  async create(ventaId: number) {
-    const venta = await this.compraRepository.findOne(ventaId);
-    const factura = new Factura();
+  async create(ventaId: number): Promise<Compra> {
+    try {
+      const compra = await this.compraRepository.findOne(+ventaId);
+      const factura = new Factura();
+      factura.emisor = 'Master Music SA de CV';
+      factura.postalcode = '64610';
+      factura.cfdi = 'G03';
 
-    factura.idVenta = venta.idCompra;
-    factura.emisor = 'Master Music SA de CV';
-    factura.postalcode = '64610';
-    factura.cfdi = 'G03';
+      const savedFactura = await this.facturaRepository.save(factura);
+      compra.idFactura = savedFactura.id;
 
-    return this.facturaRepository.save(factura);
+      return await this.compraRepository.save(compra);
+    } catch (e) {
+      throw new Error(e);
+    }
   }
 
   findAll() {
@@ -43,7 +48,7 @@ export class FacturaService {
     return `This action removes a #${id} factura`;
   }
 
-  findFromCompra(id: number) {
-    return this.facturaRepository.find({ where: { idVenta: id } });
+  findCompra(id: number) {
+    return this.compraRepository.findOne(id);
   }
 }

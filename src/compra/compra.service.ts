@@ -55,7 +55,7 @@ export class CompraService {
         'idOcasionCompra2',
         'idMetodoEntrega2',
         'idMetodoPago2',
-        'factura',
+        'idFactura2',
       ],
     });
   }

@@ -6,6 +6,7 @@ import {
   Param,
   Delete,
   All,
+  Res,
 } from '@nestjs/common';
 import { FacturaService } from './factura.service';
 import { UpdateFacturaDto } from './dto/update-factura.dto';
@@ -15,13 +16,11 @@ export class FacturaController {
   constructor(private readonly facturaService: FacturaService) {}
 
   @All('create/:id')
-  create(@Param('id') ventaId: string) {
-    const factura = this.facturaService.create(+ventaId);
-
-    return {
-      ventaId,
-      factura,
-    };
+  async create(@Res() res, @Param('id') ventaId: string) {
+    const ventaExists = await this.facturaService.findCompra(+ventaId);
+    if (ventaExists.idFactura) return res.redirect(`/compra/${ventaId}`);
+    await this.facturaService.create(+ventaId);
+    return res.redirect(`/compra/${ventaId}`);
   }
 
   @Get()

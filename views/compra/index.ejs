@@ -24,8 +24,8 @@
                     <tr>
                         <td align="middle">
                             <a href="/compra/<%= compra.idCompra %>">
-                                <span class="badge badge-primary">
-                              <%= compra.idCompra %>
+                                <span class="badge badge-<%= !compra.idFactura ? 'secondary' : 'success' %>">
+                              # <%= compra.idCompra.toString().padStart(6, 0) %>
                           </span>
                             </a>
                         </td>
