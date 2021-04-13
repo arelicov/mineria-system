@@ -1,6 +1,6 @@
 <%- include('../template/header') %>
 
-<h1>Productos</h1>
+<h1>Compras</h1>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -16,7 +16,6 @@
                     <th>Metodo de entrega</th>
                     <th>Unidades</th>
                     <th>Fecha</th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,9 +36,6 @@
                         <td><%= compra.idMetodoEntrega2.metodoDeEntrega %></td>
                         <td><%= compra.unidades %></td>
                         <td><%= compra.fecha %></td>
-                        <td>
-                            <a href="/compra/delete/<%= compra.idCompra%>">Eliminar</a>
-                        </td>
                     </tr>
                 <% }); %>
                 </tbody>
